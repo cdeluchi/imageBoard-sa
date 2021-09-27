@@ -1,11 +1,20 @@
-const express = require('express');
+const express = require("express");
 const app = express();
+const db = require("./db");
 
-app.use(express.static('./public'));
+app.use(express.static("./public"));
 
 app.use(express.json());
 
-app.get('*', (req, res) => {
+app.get("/images", (req, res) => {
+    console.log("req.body", req.body);
+    db.getImage().then(({ rows }) => {
+        console.log("rows", rows);
+        return res.json({ rows });
+    });
+});
+
+app.get("*", (req, res) => {
     res.sendFile(`${__dirname}/index.html`);
 });
 
