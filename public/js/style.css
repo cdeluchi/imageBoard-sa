@@ -3,11 +3,74 @@
     margin: 0;
 }
 body {
-    background-color: #f7f9f7;
-    display: grid;
-    grid-template-rows: 192px 3fr 52px;
+    background-color: #f3ebe9;
+    margin: 30px;
+    color: #212121;
+    font-family: "helvetica";
+}
+h1 {
+    text-align: center;
+}
+h2 {
+    margin: 20px 0 0 100px;
+}
+input[type="text"] {
+    padding: 10px;
+    margin: 10px;
+    border: 0;
+    border-radius: 10px;
+    box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+    width: 20%;
 }
 
-img {
-    width: 30%;
+input,
+textarea {
+    font-family: inherit;
+    font-size: inherit;
 }
+
+.form-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+.image-grid {
+    margin: 20px;
+    display: grid;
+    grid-template-columns: 430px 3fr 430px;
+    background-color: #fbfbfd;
+    justify-items: center;
+}
+.image-box {
+    display: flex;
+    flex-direction: row;
+    border: 2px solid #f99e9e;
+    height: 400px;
+    width: 300px;
+    flex-wrap: wrap;
+    padding: 10px;
+    margin: 15px;
+    align-items: center;
+    justify-content: center;
+}
+img {
+    width: 100%;
+    height: 80%;
+    object-fit: cover;
+}
+h4 {
+    color: rgb(68, 64, 64);
+}
+.btn {
+    background-color: #f99e9e;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* palete
+#212121
+#f99E9E
+#F3EBE9
+#FBFBFD */

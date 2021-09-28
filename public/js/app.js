@@ -33,7 +33,9 @@ Vue.createApp({
                 body: fd,
             })
                 .then((response) => response.json())
-                .then((result) => console.log(result))
+                .then((result) => {
+                    this.images.unshift(result.rows[0]);
+                })
                 .catch((err) => console.log(err));
         },
         fileSelectHandler(e) {
