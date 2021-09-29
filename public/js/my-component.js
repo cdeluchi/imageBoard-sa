@@ -11,8 +11,7 @@ const component = {
             .then(({ rows }) => {
                 console.log("images", rows);
                 this.images = rows[0];
-            })
-            .catch(console.log);
+            });
     },
     methods: {
         showModal() {
@@ -23,9 +22,15 @@ const component = {
     },
     props: ["id"],
     template: `
-                <h1>My Modal {{id}}</h1>
-                <img :scr="images.url">
-                 <button class="modal-button" @click="close">CLOSE</button>
+                <h1>My Modal </h1>
+                    id:{{id}}
+                    <img  :src="images.url"><br/> 
+                    Username: {{images.username}}<br/>
+                    Title: {{images.title}}<br/>
+                    Description: {{images.description}}<br/>
+                    Url: {{images.url}}<br/>
+                    Date: {{images.created_at}}<br/>
+                    <button @click="$emit('close')">close</button><br/>
                 `,
 };
 
