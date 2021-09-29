@@ -1,4 +1,7 @@
 import * as Vue from "./vue.js";
+import { myComponent } from "./my-component.js";
+
+console.log("my component", myComponent);
 
 Vue.createApp({
     data() {
@@ -9,6 +12,8 @@ Vue.createApp({
             description: "",
             username: "",
             file: null,
+            modalIsVisible: false,
+            id: null,
         };
     },
     mounted() {
@@ -28,6 +33,7 @@ Vue.createApp({
             fd.append("description", this.description);
             fd.append("username", this.username);
             fd.append("file", this.file);
+            fd.append("showModal", this.showModal);
             fetch("/upload", {
                 method: "POST",
                 body: fd,
@@ -38,8 +44,18 @@ Vue.createApp({
                 })
                 .catch((err) => console.log(err));
         },
+        showModal(ex) {
+            this.modalIsVisible = true;
+            this.id = ex;
+            console.log("this.id", this.id);
+        },
         fileSelectHandler(e) {
             this.file = e.target.files[0];
         },
+        closeModal() {},
+    },
+
+    components: {
+        "image-modal": myComponent,
     },
 }).mount("#main");

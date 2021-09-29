@@ -18,11 +18,14 @@
         </form>
         <section class="image-grid">
             <div class="image-box" v-for="image in images">
-                <img :src="image.url">
+                <img @click="showModal(image.id)" :src="image.url">
                 <br>
                 <h4>{{image.title}}</h4> 
             </div>
         </section>
+        <!-- modal session -->
+            <image-modal v-if="modalIsVisible" :id="id" @close="closeModal"></image-modal>
+            
     </div>
     <script src="/js/app.js" type="module" crossorigin="use-credentials"></script>
 </body>

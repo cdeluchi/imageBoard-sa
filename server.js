@@ -27,10 +27,22 @@ app.post("/upload", uploader.single("file"), s3.upload, (req, res) => {
     }
 });
 
+// **** getImage *** //
+
 app.get("/images", (req, res) => {
     // console.log("req.body", req.body);
     db.getImage().then(({ rows }) => {
         // console.log("rows", rows);
+        return res.json({ rows });
+    });
+});
+
+// **** get Id ***** //
+
+app.get("/images", (req, res) => {
+    console.log("req.body", req.body);
+    db.getId().then(({ rows }) => {
+        console.log("rows in getId", rows);
         return res.json({ rows });
     });
 });
