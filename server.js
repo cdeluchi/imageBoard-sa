@@ -39,9 +39,9 @@ app.get("/images", (req, res) => {
 
 // **** get Id ***** //
 
-app.get("/images", (req, res) => {
-    console.log("req.body", req.body);
-    db.getId().then(({ rows }) => {
+app.get("/images/:id", (req, res) => {
+    console.log("req.params", req.params);
+    db.getId(req.params.id).then(({ rows }) => {
         console.log("rows in getId", rows);
         return res.json({ rows });
     });

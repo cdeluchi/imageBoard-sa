@@ -21,7 +21,7 @@ module.exports.addImages = (url, username, title, description, created_at) => {
 module.exports.getId = (id) => {
     const params = [id];
     return db.query(
-        `SELECT id, url, username, title, description, created_at FROM images ORDER BY id DESC`,
+        `SELECT id, url, username, title, description, created_at FROM images WHERE id =$1`,
         params
     );
 };

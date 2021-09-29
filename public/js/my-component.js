@@ -4,6 +4,12 @@ const component = {
     },
     mounted() {
         console.log("this is a component mounted!", this.id);
+        fetch(`/images/${this.id}`)
+            .then((response) => response.json())
+            .then(({ rows }) => {
+                console.log("images", rows);
+            })
+            .catch(console.log);
     },
     methods: {
         showModal() {
