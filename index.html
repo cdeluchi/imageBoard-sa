@@ -24,7 +24,7 @@
             </div>
         </section>
         <!-- modal session -->
-            <image-modal v-if="modalIsVisible" :id="id" @close="closeModal"></image-modal>
+            <image-modal v-if="modalIsVisible" :id="id" @close="id=null"></image-modal>
             
     </div>
     <script src="/js/app.js" type="module" crossorigin="use-credentials"></script>

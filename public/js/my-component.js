@@ -1,6 +1,8 @@
 const component = {
     data() {
-        return {};
+        return {
+            images: [],
+        };
     },
     mounted() {
         console.log("this is a component mounted!", this.id);
@@ -8,6 +10,7 @@ const component = {
             .then((response) => response.json())
             .then(({ rows }) => {
                 console.log("images", rows);
+                this.images = rows[0];
             })
             .catch(console.log);
     },
@@ -20,7 +23,8 @@ const component = {
     },
     props: ["id"],
     template: `
-                <h1>My Modal</h1>
+                <h1>My Modal {{id}}</h1>
+                <img :scr="images.url">
                  <button class="modal-button" @click="close">CLOSE</button>
                 `,
 };

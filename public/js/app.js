@@ -33,6 +33,7 @@ Vue.createApp({
             fd.append("description", this.description);
             fd.append("username", this.username);
             fd.append("file", this.file);
+            fd.append("created_at", this.created_at);
             fd.append("showModal", this.showModal);
             fetch("/upload", {
                 method: "POST",
