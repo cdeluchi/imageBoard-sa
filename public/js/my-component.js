@@ -22,15 +22,15 @@ const component = {
     },
     props: ["id"],
     template: `
-                <h1>My Modal </h1>
-                    id:{{id}}
-                    <img  :src="images.url"><br/> 
-                    Username: {{images.username}}<br/>
-                    Title: {{images.title}}<br/>
-                    Description: {{images.description}}<br/>
-                    Url: {{images.url}}<br/>
-                    Date: {{images.created_at}}<br/>
-                    <button @click="$emit('close')">close</button><br/>
+                <div class="modal-image modal-cover">
+                <div class="bck-modal">
+                <img class="img-cover"  :src="images.url"><br/>
+                <h1>{{images.title}}<br/></h1>
+                Description: {{images.description}}<br/>
+                <h2>Uploaded by {{images.username}} on {{images.created_at}}</h2>
+                <button @click="$emit('close')">close</button><br/>
+                </div>
+                </div>
                 `,
 };
 

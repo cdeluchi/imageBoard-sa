@@ -47,6 +47,16 @@ app.get("/images/:id", (req, res) => {
     });
 });
 
+// **** GET MORE IMAGE / MORE BUTTON route ****//
+
+app.get("/images/:lowestId", (req, res) => {
+    console.log("req.params", req.params);
+    db.addMoreImages(req.params.id).then(({ rows }) => {
+        console.log("rows in addMoreImages", rows);
+        return res.json({ rows });
+    });
+});
+
 app.get("*", (req, res) => {
     res.sendFile(`${__dirname}/index.html`);
 });
