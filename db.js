@@ -7,15 +7,14 @@ const db = spicedPg(
 );
 
 module.exports.getImage = () => {
-    const q = `SELECT id, url, username, title, description, created_at FROM images ORDER BY id DESC id ASC
-  LIMIT 6`;
+    const q = `SELECT id, url, username, title, description, created_at FROM images ORDER BY id DESC LIMIT 6`;
     return db.query(q);
 };
 
-module.exports.addImages = (url, username, title, description, created_at) => {
-    const q = `INSERT INTO images (url, username, title, description, created_at)
-            VALUES ($1, $2, $3, $4, $5) RETURNING *`;
-    const params = [url, username, title, description, created_at];
+module.exports.addImages = (url, username, title, description) => {
+    const q = `INSERT INTO images (url, username, title, description)
+            VALUES ($1, $2, $3, $4) RETURNING *`;
+    const params = [url, username, title, description];
     return db.query(q, params);
 };
 
@@ -27,12 +26,24 @@ module.exports.getId = (id) => {
     );
 };
 
-module.exports.addMoreImages = () => {
-    const params = [];
+module.exports.addMoreImages = (id) => {
+    const params = [id];
     return db.query(
-        `SELECT url, title, id, (SELECT id FROM images ORDER BY id ASC LIMIT 1) AS "lowestId" FROM images WHERE id < $1 ORDER BY id DESC LIMIT 6;`,
+        `SELECT url, title, id, (SELECT id FROM images ORDER BY id ASC LIMIT 1) 
+        AS "lowestId" FROM images WHERE id < $1 ORDER BY id DESC LIMIT 3;`,
         params
     );
 };
 
-// **** FIX THE TABLE WITH CREATED_AT****////
+//  COMMENTS ROUTE //
+module.exports.addComment = (username, comment, img_id) => {
+    const params = [username, comment, img_id];
+    const q = `INSERT INTO comments (username, comment, img_id) VALUES ($1, $2, $3)`;
+    return db.query(q, params);
+};
+
+module.exports.getComments = (username, comment, img_id) => {
+    const params = [username, comment, img_id];
+    const q = `SELECT * FROM comments WHERE img_id=$1`;
+    return db.query(q, params);
+};

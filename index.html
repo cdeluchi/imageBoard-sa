@@ -26,9 +26,7 @@
         <!-- modal session -->
             <image-modal v-if="id" :id="id" @close="id=null"></image-modal>
         <!-- more button session -->
-            <form class="triggerBtn">
-             <button class="moreBtn" @click.prevent="clickHandler" >More Images</button>
-            </form>
+             <button class="moreBtn" @click.prevent="moreClick" v-if="moreBtn">More Images</button>
 
     </div>
     <script src="/js/app.js" type="module" crossorigin="use-credentials"></script>

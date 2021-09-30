@@ -14,6 +14,7 @@ Vue.createApp({
             file: null,
             modalIsVisible: false,
             id: null,
+            morebutton: true,
         };
     },
     mounted() {
@@ -53,10 +54,36 @@ Vue.createApp({
         fileSelectHandler(e) {
             this.file = e.target.files[0];
         },
-        closeModal() {},
+        // more image button //
+        moreClick() {
+            console.log(
+                "last Image on screen",
+                this.images[this.images.length - 1]
+            );
+            fetch("/moreImages/" + this.images[this.images.length - 1].id)
+                .then((response) => response.json())
+                .then((response) => {
+                    // console.log("result from fetch/moreImage", response.rows);
+                    for (let i = 0; i < response.rows.length; i++) {
+                        // console.log(response.rows[i]);
+                        this.images.push(response.rows[i]);
+                        let singleObject = response.rows.length - 1;
+                        let lastImage = response.rows[singleObject].id;
+                        if (lastImage == response.rows[0].lowestId) {
+                            this.moreBtn = false;
+                        }
+
+                        // you need to check whether any of the single objects in here have an id equal to the lowest id
+                        // if so, hide the more button
+                    }
+                })
+                .catch((err) => console.log("err in moreClick function", err));
+        },
     },
 
     components: {
         "image-modal": myComponent,
     },
 }).mount("#main");
+
+// ***** FIX THE HIDE BUTTON ****//
