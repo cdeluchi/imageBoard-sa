@@ -1,3 +1,5 @@
+// import { comment } from "../myComment";
+
 const component = {
     data() {
         return {
@@ -24,17 +26,28 @@ const component = {
     template: `
                 <div class="modal-image modal-cover">
                 <div class="bck-modal">
+
                 <img class="img-cover"  :src="images.url"><br/>
-                <h1>{{images.title}}<br/></h1>
-                <h2>Uploaded by {{images.username}} on 
+
+                <h2>{{images.title}}<br/></h2>
+
+                <h4>Uploaded by {{images.username}} on 
                 </br>
-                {{images.created_at}}</h2>
+                {{images.created_at}}</h4>
+
                 Description: {{images.description}}<br/>
-                <button @click="$emit('close')">close</button><br/>
+
+                <button class="btn" @click="$emit('close')">close</button><br/>
+                
                 </div>
                 </div>
                 
                 `,
+
+    // <comment v-if="id :id="id"></comment>
+    // components: {
+    //     "comment-modal": myComment,
+    // },
 };
 
 export { component as myComponent };

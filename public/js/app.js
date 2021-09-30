@@ -14,7 +14,7 @@ Vue.createApp({
             file: null,
             modalIsVisible: false,
             id: null,
-            morebutton: true,
+            moreBtn: true,
         };
     },
     mounted() {
@@ -72,9 +72,6 @@ Vue.createApp({
                         if (lastImage == response.rows[0].lowestId) {
                             this.moreBtn = false;
                         }
-
-                        // you need to check whether any of the single objects in here have an id equal to the lowest id
-                        // if so, hide the more button
                     }
                 })
                 .catch((err) => console.log("err in moreClick function", err));
