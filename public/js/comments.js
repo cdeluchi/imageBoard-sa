@@ -38,7 +38,10 @@ const comment = {
                 body: JSON.stringify(newComment),
             })
                 .then((response) => response.json())
-                .then((response) => console.log(response))
+                .then((result) => {
+                    console.log(result);
+                    this.comments.push(result.rows[0]);
+                })
                 .catch((err) => console.log(err));
         },
     },
@@ -51,11 +54,11 @@ const comment = {
             <input v-model="username" type="text" name="username" placeholder="username">
             <button @click.prevent="submitComment" type="submit">SUBMIT THE COMMENT</button>
             </form>
-            <div id="commentModal">
-            <div v-for="comment in comments">
-            <h4>{{comment.username}} commented {{comment.comment}} on {{comment.created_at}}</h4>
-            </div>
-            </div>
+            <div id="showComment">
+                        <div v-for="comment in comments">
+                            <p>Name: {{comment.username}} <br/> Comment: {{comment.comment}}</p>
+                        </div>
+                    </div>
             </div>
     `,
 };

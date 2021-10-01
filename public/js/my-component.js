@@ -14,29 +14,29 @@ const component = {
                 console.log("images", rows);
                 this.images = rows[0];
             });
+        // window.History.pushState(
+        //     { url: "http://localhost:8080/" },
+        //     "",
+        //     "/images/:id"
+        // );
     },
     methods: {
         showModal() {
             this.images;
             this.$emit("close");
         },
-        close() {},
     },
     props: ["id"],
     template: `
                 <div class="modal-image modal-cover">
                 <div class="bck-modal">
 
-                <img class="img-cover"  :src="images.url">
-                <h2>{{images.title}}</h2>
-                 {{images.description}}
+                <img class="img-cover"  :src="images.url"><br/>
+                <h2>{{images.title}}</h2><br/>
+                 {{images.description}}<br/>
 
-
-                <h4>Uploaded by <em>{{images.username}}</em> on 
+                <h4>Uploaded by <em>{{images.username}}</em><br/></h4>
                 
-                {{images.created_at}}</h4>
-                
-
                 <button class="btn" @click="$emit('close')">close</button>
                 
                 <comment v-if="id" :id="id"></comment>
@@ -51,5 +51,3 @@ const component = {
 };
 
 export { component as myComponent };
-
-// ****FIX THE CREATED_AT***//

@@ -15,6 +15,7 @@ Vue.createApp({
             modalIsVisible: location.pathname.slice(1),
             id: null,
             moreBtn: true,
+            showComment: true,
         };
     },
     mounted() {

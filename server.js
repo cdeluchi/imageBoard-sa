@@ -67,9 +67,25 @@ app.get("/comments/:id", (req, res) => {
 
 app.post("/comments", (req, res) => {
     console.log("post in comments", req.body);
-    db.addComment(req.body.username, req.body.comment, req.body.id);
-    return res.json();
+    db.addComment(req.body.username, req.body.comment, req.body.id).then(
+        ({ rows }) => {
+            return res.json({ rows });
+        }
+    );
 });
+
+//  **** CREATED A NEW ROUTE FOR CHANGE URL *****//
+// location.pathname.slice(1);
+// history.pushState({}, "", "/funky/chicken");
+// replaceState;
+// pushState
+// popstate
+
+// addEventListener("popstate", (e) => {
+//     console.log(location.pathname, e.state);
+// show whatever is appropriate for the new url
+// if you need it, e.state has the data you passed to `pushState`
+// });
 
 //  **** DO NOT TOUCH HERE *****//
 app.get("*", (req, res) => {

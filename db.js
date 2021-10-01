@@ -21,7 +21,8 @@ module.exports.addImages = (url, username, title, description) => {
 module.exports.getId = (id) => {
     const params = [id];
     return db.query(
-        `SELECT id, url, username, title, description, created_at FROM images WHERE id =$1`,
+        `SELECT id, url, username, title, description, created_at 
+        FROM images WHERE id =$1`,
         params
     );
 };
@@ -38,12 +39,14 @@ module.exports.addMoreImages = (id) => {
 //  COMMENTS ROUTE //
 module.exports.addComment = (username, comment, img_id) => {
     const params = [username, comment, img_id];
-    const q = `INSERT INTO comments (username, comment, img_id) VALUES ($1, $2, $3)`;
+    console.log("params in add comment", params);
+    const q = `INSERT INTO comments (username, comment, img_id) 
+    VALUES ($1, $2, $3) RETURNING username, comment, img_id, id`;
     return db.query(q, params);
 };
 
-module.exports.getComments = (username, comment, img_id) => {
-    const params = [username, comment, img_id];
+module.exports.getComments = (img_id) => {
+    const params = [img_id];
     const q = `SELECT * FROM comments WHERE img_id=$1`;
     return db.query(q, params);
 };
