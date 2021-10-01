@@ -1,4 +1,4 @@
-// import { comment } from "../myComment";
+import { myComment } from "./comments.js";
 
 const component = {
     data() {
@@ -27,27 +27,29 @@ const component = {
                 <div class="modal-image modal-cover">
                 <div class="bck-modal">
 
-                <img class="img-cover"  :src="images.url"><br/>
+                <img class="img-cover"  :src="images.url">
+                <h2>{{images.title}}</h2>
+                 {{images.description}}
 
-                <h2>{{images.title}}<br/></h2>
 
-                <h4>Uploaded by {{images.username}} on 
-                </br>
-                {{images.created_at}}</h4>
-
-                Description: {{images.description}}<br/>
-
-                <button class="btn" @click="$emit('close')">close</button><br/>
+                <h4>Uploaded by <em>{{images.username}}</em> on 
                 
+                {{images.created_at}}</h4>
+                
+
+                <button class="btn" @click="$emit('close')">close</button>
+                
+                <comment v-if="id" :id="id"></comment>
                 </div>
                 </div>
                 
                 `,
 
-    // <comment v-if="id :id="id"></comment>
-    // components: {
-    //     "comment-modal": myComment,
-    // },
+    components: {
+        comment: myComment,
+    },
 };
 
 export { component as myComponent };
+
+// ****FIX THE CREATED_AT***//

@@ -12,7 +12,7 @@ Vue.createApp({
             description: "",
             username: "",
             file: null,
-            modalIsVisible: false,
+            modalIsVisible: location.pathname.slice(1),
             id: null,
             moreBtn: true,
         };

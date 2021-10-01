@@ -18,7 +18,12 @@ const comment = {
     },
     methods: {
         submitComment() {
-            console.log("add comment", this.username, this.comment, this.id);
+            console.log(
+                "add comment in submitComment",
+                this.username,
+                this.comment,
+                this.id
+            );
 
             const newComment = {};
             newComment.username = this.username;
@@ -33,21 +38,20 @@ const comment = {
                 body: JSON.stringify(newComment),
             })
                 .then((response) => response.json())
-                .then((result) => console.log(result))
+                .then((response) => console.log(response))
                 .catch((err) => console.log(err));
         },
     },
 
     props: ["id"],
     template: `
-        <div class="comWrapper" >
-            <h3>Comment the image</h3>
+        <div class="commWrapper" >
             <form class="form-input">
             <input v-model="comment" type="text" name="comment" placeholder="comment">
             <input v-model="username" type="text" name="username" placeholder="username">
             <button @click.prevent="submitComment" type="submit">SUBMIT THE COMMENT</button>
             </form>
-            <div id="comment-grid">
+            <div id="commentModal">
             <div v-for="comment in comments">
             <h4>{{comment.username}} commented {{comment.comment}} on {{comment.created_at}}</h4>
             </div>

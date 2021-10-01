@@ -59,7 +59,7 @@ app.get("/moreImages/:lowestId", (req, res) => {
 
 // **** ADD COMMETS ****//
 app.get("/comments/:id", (req, res) => {
-    console.log("params in comment id", req.params.id);
+    console.log("params in comment id", req.params);
     db.getComments(req.params.id).then(({ rows }) => {
         return res.json({ rows });
     });
