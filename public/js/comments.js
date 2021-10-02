@@ -37,9 +37,6 @@ const comment = {
                 })
                 .catch((err) => console.log(err));
         },
-        deleteComment(index) {
-            this.comments.splice(index, 1);
-        },
     },
 
     props: ["id"],

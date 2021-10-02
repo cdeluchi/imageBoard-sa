@@ -50,14 +50,3 @@ module.exports.getComments = (img_id) => {
     const q = `SELECT * FROM comments WHERE img_id=$1`;
     return db.query(q, params);
 };
-
-// *****DELETE COMMENT ******//
-module.exports.deleteComment = (id) => {
-    const params = [id];
-    const q = `
-            DELETE
-            FROM comments
-            WHERE img_id=$1
-    `;
-    return db.query(q, params);
-};

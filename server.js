@@ -74,16 +74,6 @@ app.post("/comments", (req, res) => {
     );
 });
 
-app.post("/deleteLastComment", (req, res) => {
-    console.log("req.body deleteLastComment", req.body);
-    console.log("req.session.body deleteLastComment", req.session);
-    db.deleteComment(req.body.username, req.body.comment, req.body.id).then(
-        ({ rows }) => {
-            return res.json({ rows });
-        }
-    );
-});
-
 //  **** DO NOT TOUCH HERE *****//
 app.get("*", (req, res) => {
     res.sendFile(`${__dirname}/index.html`);
