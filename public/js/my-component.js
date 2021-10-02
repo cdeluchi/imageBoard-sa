@@ -11,14 +11,20 @@ const component = {
         fetch(`/images/${this.id}`)
             .then((response) => response.json())
             .then(({ rows }) => {
-                console.log("images", rows);
+                // console.log("images", rows);
                 this.images = rows[0];
+                history.pushState({}, "", this.id);
             });
-        // window.History.pushState(
-        //     { url: "http://localhost:8080/" },
-        //     "",
-        //     "/images/:id"
-        // );
+        addEventListener("popstate", (e) => {
+            if (this.id == isNaN || this.id != this.id) {
+                this.$emit("close");
+            }
+            console.log(location.pathname, e.state);
+            // history.pushState({}, "", this.id);
+            history.replaceState({}, "", this.id);
+            console.log(history.replaceState);
+            return this.id;
+        });
     },
     methods: {
         showModal() {
@@ -51,3 +57,16 @@ const component = {
 };
 
 export { component as myComponent };
+
+//  **** CREATED CHANGE URL *****//
+// location.pathname.slice(1); DONE
+// history.pushState({}, "", "/funky/chicken");
+// replaceState;
+// pushState
+// popstate
+
+// addEventListener("popstate", (e) => {
+//     console.log(location.pathname, e.state);
+// show whatever is appropriate for the new url
+// if you need it, e.state has the data you passed to `pushState`
+// });

@@ -19,7 +19,7 @@ Vue.createApp({
         };
     },
     mounted() {
-        console.log("MOUNTED");
+        // console.log("MOUNTED");
         fetch("/images") //make http request
             .then((response) => response.json())
             .then(({ rows }) => {
@@ -50,17 +50,17 @@ Vue.createApp({
         showModal(ex) {
             this.modalIsVisible = true;
             this.id = ex;
-            console.log("this.id", this.id);
+            // console.log("this.id", this.id);
         },
         fileSelectHandler(e) {
             this.file = e.target.files[0];
         },
         // more image button //
         moreClick() {
-            console.log(
-                "last Image on screen",
-                this.images[this.images.length - 1]
-            );
+            // console.log(
+            //     "last Image on screen",
+            //     this.images[this.images.length - 1]
+            // );
             fetch("/moreImages/" + this.images[this.images.length - 1].id)
                 .then((response) => response.json())
                 .then((response) => {
@@ -83,5 +83,3 @@ Vue.createApp({
         "image-modal": myComponent,
     },
 }).mount("#main");
-
-// ***** FIX THE HIDE BUTTON ****//

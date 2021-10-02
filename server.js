@@ -50,23 +50,23 @@ app.get("/images/:id", (req, res) => {
 // **** GET MORE IMAGE / MORE BUTTON route ****//
 
 app.get("/moreImages/:lowestId", (req, res) => {
-    console.log("req.params in lowestId", req.params);
+    // console.log("req.params in lowestId", req.params);
     db.addMoreImages(req.params.lowestId).then(({ rows }) => {
-        console.log("rows in addMoreImages", rows);
+        // console.log("rows in addMoreImages", rows);
         return res.json({ rows });
     });
 });
 
 // **** ADD COMMETS ****//
 app.get("/comments/:id", (req, res) => {
-    console.log("params in comment id", req.params);
+    // console.log("params in comment id", req.params);
     db.getComments(req.params.id).then(({ rows }) => {
         return res.json({ rows });
     });
 });
 
 app.post("/comments", (req, res) => {
-    console.log("post in comments", req.body);
+    // console.log("post in comments", req.body);
     db.addComment(req.body.username, req.body.comment, req.body.id).then(
         ({ rows }) => {
             return res.json({ rows });
@@ -74,18 +74,15 @@ app.post("/comments", (req, res) => {
     );
 });
 
-//  **** CREATED A NEW ROUTE FOR CHANGE URL *****//
-// location.pathname.slice(1);
-// history.pushState({}, "", "/funky/chicken");
-// replaceState;
-// pushState
-// popstate
-
-// addEventListener("popstate", (e) => {
-//     console.log(location.pathname, e.state);
-// show whatever is appropriate for the new url
-// if you need it, e.state has the data you passed to `pushState`
-// });
+app.post("/deleteLastComment", (req, res) => {
+    console.log("req.body deleteLastComment", req.body);
+    console.log("req.session.body deleteLastComment", req.session);
+    db.deleteComment(req.body.username, req.body.comment, req.body.id).then(
+        ({ rows }) => {
+            return res.json({ rows });
+        }
+    );
+});
 
 //  **** DO NOT TOUCH HERE *****//
 app.get("*", (req, res) => {
