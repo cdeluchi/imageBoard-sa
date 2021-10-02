@@ -13,11 +13,19 @@ h1 {
     text-align: center;
     font-size: 40px;
 }
-h2 {
-    margin: 15px 0 0 100px;
+.h2inhead {
+    margin: 20px 55px;
     font-size: 20px;
+    text-align: start;
 }
-input[type="text"] {
+
+h2 {
+    margin: 15px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.inputImage[type="text"] {
     padding: 10px;
     margin: 10px;
     border: 0;
@@ -37,11 +45,25 @@ textarea {
     align-items: center;
     justify-content: center;
     padding: 10px;
+    border-radius: 5px solid #ccc;
 }
+
+.inputComment {
+    display: flex;
+    width: 40%;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    margin: 10px;
+    border: 0;
+    border-radius: 10px;
+    box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+}
+
 .image-grid {
     margin: 20px;
     display: grid;
-    grid-template-columns: 430px 3fr 430px;
+    grid-template-columns: 450px 3fr 450px;
     background-color: #fbfbfd;
     justify-items: center;
 }
@@ -64,6 +86,7 @@ img {
 }
 h4 {
     color: rgb(68, 64, 64);
+    margin: 15px;
 }
 .btn {
     background-color: #f99e9e;
@@ -101,14 +124,14 @@ h4 {
 
 .bck-modal {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     border: 2px solid #f99e9e;
     background-color: #f3ebe9;
     height: 700px;
-    width: 600px;
-    flex-wrap: wrap;
+    width: 900px;
     justify-content: center;
+    align-items: center;
     padding: 10px;
     margin: 15px;
     z-index: 98;
@@ -119,6 +142,7 @@ h4 {
     width: 450px;
     object-fit: cover;
     border: 2px solid dimgray;
+    margin: 10px;
 }
 
 .triggerBtn {
@@ -127,8 +151,28 @@ h4 {
     justify-content: center;
 }
 .moreBtn {
+    display: flex;
+    justify-self: center;
+    align-items: center;
     background-color: #f99e9e;
     cursor: pointer;
     padding: 10px;
     border-radius: 10px;
+}
+
+.btncomment {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.commWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-left: 2px solid #ccc;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 0;
+    margin: 10px;
 }

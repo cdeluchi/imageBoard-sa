@@ -37,20 +37,26 @@ const comment = {
                 })
                 .catch((err) => console.log(err));
         },
+        deleteComment(index) {
+            this.comments.splice(index, 1);
+        },
     },
 
     props: ["id"],
     template: `
         <div class="commWrapper" >
             <form class="form-input">
-            <input v-model="comment" type="text" name="comment" placeholder="comment">
-            <input v-model="username" type="text" name="username" placeholder="username">
-            <button @click.prevent="submitComment" type="submit">SUBMIT THE COMMENT</button>
-            <button @click.prevent="deleteComment" type="delete">DELETE THE COMMENT</button>
+            <input class="inputComment" v-model="comment" type="text" name="comment" placeholder="comment">
+            <input class="inputComment" v-model="username" type="text" name="username" placeholder="username">
             </form>
+            <button class= "btncomment"@click.prevent="submitComment" type="submit">SUBMIT THE COMMENT</button>
+            <br/>
+            <button class= "btncomment" @click.prevent="deleteComment(index)" type="delete">DELETE THE COMMENT</button>
+            <br/>
+            
             <div id="showComment">
                         <div v-for="comment in comments">
-                            <p> <strong> Name:</strong> {{comment.username}} <br/> <strong>Comment: </strong>{{comment.comment}}</p>
+                            <p> <strong>Comment: </strong>{{comment.comment}}<br/><strong> Name:</strong> {{comment.username}} <br/><br/></p>
                         </div>
                     </div>
             </div>
