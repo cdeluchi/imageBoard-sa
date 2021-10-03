@@ -19,7 +19,11 @@ Vue.createApp({
         };
     },
     mounted() {
-        // console.log("MOUNTED");
+        console.log("MOUNTED");
+        addEventListener("popstate", (e) => {
+            console.log(location.pathname, e.state);
+            this.id = location.pathname.slice(1) || null;
+        });
         fetch("/images") //make http request
             .then((response) => response.json())
             .then(({ rows }) => {
@@ -37,6 +41,9 @@ Vue.createApp({
             fd.append("file", this.file);
             fd.append("created_at", this.created_at);
             fd.append("showModal", this.showModal);
+            this.title = "";
+            this.description = "";
+            this.username = "";
             fetch("/upload", {
                 method: "POST",
                 body: fd,

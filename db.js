@@ -57,7 +57,7 @@ module.exports.deleteComment = (id) => {
     const q = `
             DELETE
             FROM comments
-            WHERE img_id=$1
+            WHERE id=$1
     `;
     return db.query(q, params);
 };

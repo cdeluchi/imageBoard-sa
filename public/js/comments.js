@@ -22,7 +22,8 @@ const comment = {
             newComment.username = this.username;
             newComment.comment = this.comment;
             newComment.id = this.id;
-
+            this.comment = "";
+            this.username = "";
             fetch("/comments", {
                 method: "POST",
                 headers: {
@@ -49,9 +50,9 @@ const comment = {
             <input class="inputComment" v-model="comment" type="text" name="comment" placeholder="comment">
             <input class="inputComment" v-model="username" type="text" name="username" placeholder="username">
             </form>
-            <button class= "btncomment"@click.prevent="submitComment" type="submit">SUBMIT THE COMMENT</button>
+            <button class= "btncomment" @click.prevent="submitComment" type="submit">SUBMIT COMMENT</button>
             <br/>
-            <button class= "btncomment" @click.prevent="deleteComment(index)" type="delete">DELETE THE COMMENT</button>
+            <button class= "btncomment" @click.prevent="deleteComment(index)" type="delete">DELETE COMMENT</button>
             <br/>
             
             <div id="showComment">

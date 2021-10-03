@@ -11,16 +11,23 @@ body {
 }
 h1 {
     text-align: center;
-    font-size: 40px;
+    font-size: 50px;
+    padding: 5px;
 }
 .h2inhead {
-    margin: 20px 55px;
+    margin: 20px 65px 0;
     font-size: 20px;
     text-align: start;
 }
 
+.h2form {
+    border-left: 0;
+    border-top: 1px solid #ccc;
+    border-right: 0;
+    border-bottom: 1px solid #ccc;
+}
+
 h2 {
-    margin: 15px;
     font-size: 20px;
     text-align: center;
 }
@@ -60,6 +67,9 @@ textarea {
     box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
 }
 
+p {
+    font-size: 20px;
+}
 .image-grid {
     margin: 20px;
     display: grid;
@@ -71,8 +81,8 @@ textarea {
     display: flex;
     flex-direction: row;
     border: 2px solid #f99e9e;
-    height: 400px;
-    width: 300px;
+    height: 450px;
+    width: 400px;
     flex-wrap: wrap;
     padding: 10px;
     margin: 15px;
@@ -129,7 +139,7 @@ h4 {
     border: 2px solid #f99e9e;
     background-color: #f3ebe9;
     height: 700px;
-    width: 900px;
+    width: 1000px;
     justify-content: center;
     align-items: center;
     padding: 10px;
@@ -139,7 +149,7 @@ h4 {
 
 .img-cover {
     height: 350px;
-    width: 450px;
+    width: 500px;
     object-fit: cover;
     border: 2px solid dimgray;
     margin: 10px;
@@ -151,13 +161,16 @@ h4 {
     justify-content: center;
 }
 .moreBtn {
-    display: flex;
+    display: grid;
     justify-self: center;
     align-items: center;
+    margin: 10px 600px;
     background-color: #f99e9e;
     cursor: pointer;
     padding: 10px;
     border-radius: 10px;
+    width: 200px;
+    text-align: center;
 }
 
 .btncomment {
@@ -176,3 +189,4 @@ h4 {
     border-bottom: 0;
     margin: 10px;
 }
+/* Media queries */

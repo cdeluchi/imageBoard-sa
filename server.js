@@ -74,12 +74,13 @@ app.post("/comments", (req, res) => {
     );
 });
 
-app.post("/deleteLastComment", (req, res) => {
+app.get("/deleteLastComment", (req, res) => {
     console.log("req.body deleteLastComment", req.body);
     console.log("req.session.body deleteLastComment", req.session);
     db.deleteComment(req.body.username, req.body.comment, req.body.id).then(
-        ({ rows }) => {
-            return res.json({ rows });
+        () => {
+            req.session.comments = null;
+            return res.json();
         }
     );
 });
